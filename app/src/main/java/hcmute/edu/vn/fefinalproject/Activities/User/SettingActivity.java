@@ -22,7 +22,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        btnBack = findViewById(R.id.btn_back);
+        btnBack = findViewById(R.id.btn_Back);
         btnStatic = findViewById(R.id.btn_static);
         btnFile = findViewById(R.id.btn_file);
         btnLogout = findViewById(R.id.btn_logout);

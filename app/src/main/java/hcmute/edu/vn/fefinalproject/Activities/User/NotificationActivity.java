@@ -21,7 +21,7 @@ public class NotificationActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         titleTextView = findViewById(R.id.text_detail_title);
         contentTextView = findViewById(R.id.text_detail_content);
-        btnBack = findViewById(R.id.btn_back);
+        btnBack = findViewById(R.id.btn_Back);
         btnBack.setOnClickListener(v -> finish());
 
         // Nhận dữ liệu truyền từ MainActivity

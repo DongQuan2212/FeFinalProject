@@ -28,7 +28,7 @@ public class SubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        btnBack = findViewById(R.id.btn_back);
+        btnBack = findViewById(R.id.btn_Back);
         subjectTitle = findViewById(R.id.subject_name);
         tabLayout = findViewById(R.id.tab_subject);
         viewPager = findViewById(R.id.viewSubject);
