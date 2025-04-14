@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import hcmute.edu.vn.fefinalproject.Model.NotificationItem;
+import hcmute.edu.vn.fefinalproject.Model.Notification;
 import hcmute.edu.vn.fefinalproject.R;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> {
-    private List<NotificationItem> notificationList;
+    private List<Notification> notificationList;
     private OnNotificationClickListener listener;
 
     public interface OnNotificationClickListener {
-        void onNotificationClick(NotificationItem notification);
+        void onNotificationClick(Notification notification);
     }
-    public NotificationAdapter(List<NotificationItem> notificationList, OnNotificationClickListener listener) {
+    public NotificationAdapter(List<Notification> notificationList, OnNotificationClickListener listener) {
         this.notificationList = notificationList;
         this.listener = listener;
     }
@@ -32,7 +32,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
-        NotificationItem notification = notificationList.get(position);
+        Notification notification = notificationList.get(position);
         holder.titleTextView.setText(notification.getTitle());
 
         // Set click listener

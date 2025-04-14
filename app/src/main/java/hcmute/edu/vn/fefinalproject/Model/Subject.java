@@ -2,13 +2,13 @@ package hcmute.edu.vn.fefinalproject.Model;
 
 import java.io.Serializable;
 
-public class SubjectItem implements Serializable {
+public class Subject implements Serializable {
     private int id;
     private String name;
     private String teacher;
     private String schedule;
 
-    public SubjectItem(int id, String name, String teacher, String schedule) {
+    public Subject(int id, String name, String teacher, String schedule) {
         this.id = id;
         this.name = name;
         this.teacher = teacher;

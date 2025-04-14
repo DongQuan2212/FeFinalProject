@@ -10,20 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import hcmute.edu.vn.fefinalproject.Model.NotificationItem;
 import hcmute.edu.vn.fefinalproject.R;
-import hcmute.edu.vn.fefinalproject.Model.SubjectItem;
+import hcmute.edu.vn.fefinalproject.Model.Subject;
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> {
-    private List<SubjectItem> subjects;
+    private List<Subject> subjects;
 
     private SubjectAdapter.OnSubjectClickListener listener;
 
     public interface OnSubjectClickListener {
-        void onSubjectClick(SubjectItem subject);
+        void onSubjectClick(Subject subject);
     }
 
-    public SubjectAdapter(List<SubjectItem> subjects, OnSubjectClickListener listener) {
+    public SubjectAdapter(List<Subject> subjects, OnSubjectClickListener listener) {
         this.subjects = subjects;
         this.listener = listener;
     }
@@ -38,7 +37,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 
     @Override
     public void onBindViewHolder(@NonNull SubjectViewHolder holder, int position) {
-        SubjectItem subject = subjects.get(position);
+        Subject subject = subjects.get(position);
         holder.subjectName.setText(subject.getName());
         holder.teacherName.setText("Giáo viên: " + subject.getTeacher());
         holder.schedule.setText("Thời gian: " + subject.getSchedule());

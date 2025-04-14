@@ -1,11 +1,11 @@
 package hcmute.edu.vn.fefinalproject.Model;
 
-public class NotificationItem {
+public class Notification {
     private int id;
     private String title;
     private String content;
 
-    public NotificationItem(int id, String title, String content) {
+    public Notification(int id, String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;

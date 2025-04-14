@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.edu.vn.fefinalproject.Adapter.NotificationAdapter;
-import hcmute.edu.vn.fefinalproject.Model.NotificationItem;
+import hcmute.edu.vn.fefinalproject.Model.Notification;
 import hcmute.edu.vn.fefinalproject.R;
 import hcmute.edu.vn.fefinalproject.Adapter.SubjectAdapter;
-import hcmute.edu.vn.fefinalproject.Model.SubjectItem;
+import hcmute.edu.vn.fefinalproject.Model.Subject;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -121,16 +121,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private List<SubjectItem> getDummySubjects() {
-        List<SubjectItem> subjects = new ArrayList<>();
-        subjects.add(new SubjectItem(1,"Cong nghe Phan mem HDT_ Nhom 01CLC", "Co Tho", "Thứ 2, Tiết 1-2"));
-        subjects.add(new SubjectItem(2,"Lap trinh di dong_ Nhom 04CLC", "Trần Thị B", "Thứ 2, Tiết 3-4"));
-        subjects.add(new SubjectItem(3,"Mau thiet ke phan mem_ Nhom 01CLC", "Lê Văn C", "Thứ 3, Tiết 1-2"));
+    private List<Subject> getDummySubjects() {
+        List<Subject> subjects = new ArrayList<>();
+        subjects.add(new Subject(1,"Cong nghe Phan mem HDT_ Nhom 01CLC", "Co Tho", "Thứ 2, Tiết 1-2"));
+        subjects.add(new Subject(2,"Lap trinh di dong_ Nhom 04CLC", "Trần Thị B", "Thứ 2, Tiết 3-4"));
+        subjects.add(new Subject(3,"Mau thiet ke phan mem_ Nhom 01CLC", "Lê Văn C", "Thứ 3, Tiết 1-2"));
         return subjects;
     }
-    private List<NotificationItem> getDummyNotification() {
-        List<NotificationItem> notificationItems = new ArrayList<>();
-        notificationItems.add(new NotificationItem(1, "V/v nghỉ học môn Mẫu TKPM sáng 26/03", "Chào các em,\n" +
+    private List<Notification> getDummyNotification() {
+        List<Notification> notificationItems = new ArrayList<>();
+        notificationItems.add(new Notification(1, "V/v nghỉ học môn Mẫu TKPM sáng 26/03", "Chào các em,\n" +
                 "\n" +
                 "Hôm nay thầy không khỏe nên lớp nghỉ nha. Các em nhắn lại cho những bạn cùng nhóm mình giúp thầy.\n" +
                 "\n" +
@@ -141,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
                 "Trân trọng,\n" +
                 "\n" +
                 "Thi Văn."));
-        notificationItems.add(new NotificationItem(2, "Yêu cầu bằng cấp", "Anh yeu em qua bae"));
-        notificationItems.add(new NotificationItem(3, "Xác thưc đrl", "Anh yeu em nhieu"));
+        notificationItems.add(new Notification(2, "Yêu cầu bằng cấp", "Anh yeu em qua bae"));
+        notificationItems.add(new Notification(3, "Xác thưc đrl", "Anh yeu em nhieu"));
         return notificationItems;
     }
 
