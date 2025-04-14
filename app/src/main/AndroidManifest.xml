@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FeFinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.Admin.AddStudentActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Admin.ManageClassActivity"
             android:exported="false" />
         <activity
@@ -57,7 +60,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Activities.User.MainActivity"

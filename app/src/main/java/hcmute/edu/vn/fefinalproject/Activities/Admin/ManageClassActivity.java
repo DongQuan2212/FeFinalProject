@@ -18,6 +18,7 @@ public class ManageClassActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         btnBack = findViewById(R.id.btn_Back);
+
         btnBack.setOnClickListener(v -> finish());
     }
 }
