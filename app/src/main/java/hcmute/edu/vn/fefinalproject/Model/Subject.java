@@ -1,37 +1,54 @@
-package hcmute.edu.vn.fefinalproject.Model;
+ package hcmute.edu.vn.fefinalproject.Model;
 
-import java.io.Serializable;
+import java.util.List;
 
-public class Subject implements Serializable {
-    private int id;
-    private String name;
-    private String teacher;
-    private String schedule;
+public class Subject {
+    private String classId;
+    private String className;
+    private String description;
+    private List<StudyMaterial> studyMaterials;
 
-    public Subject(int id, String name, String teacher, String schedule) {
-        this.id = id;
-        this.name = name;
-        this.teacher = teacher;
-        this.schedule = schedule;
+    public Subject() {
     }
 
-    public int getId() {
-        return id;
+    // Constructor
+    public Subject(String classId, String className, String description, List<StudyMaterial> studyMaterials) {
+        this.classId = classId;
+        this.className = className;
+        this.description = description;
+        this.studyMaterials = studyMaterials;
     }
 
-    public String getName() {
-        return name;
+    // Getters and Setters
+    public String getClassId() {
+        return classId;
     }
 
-    public String getTeacher() {
-        return teacher;
+    public void setClassId(String classId) {
+        this.classId = classId;
     }
 
-    public String getSchedule() {
-        return schedule;
+    public String getClassName() {
+        return className;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<StudyMaterial> getStudyMaterials() {
+        return studyMaterials;
+    }
+
+    public void setStudyMaterials(List<StudyMaterial> studyMaterials) {
+        this.studyMaterials = studyMaterials;
     }
 }

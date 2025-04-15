@@ -1,9 +1,9 @@
 package hcmute.edu.vn.fefinalproject.Adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,19 +11,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import hcmute.edu.vn.fefinalproject.R;
 import hcmute.edu.vn.fefinalproject.Model.Student;
+import hcmute.edu.vn.fefinalproject.R;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
 
     private List<Student> studentList;
     private List<Student> studentListFull;
+    private OnItemClickListener onItemClickListener;
+    private OnDeleteClickListener onDeleteClickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Student student);
+    }
+
+    public interface OnDeleteClickListener {
+        void onDeleteClick(Student student);
+    }
 
     public StudentAdapter(List<Student> studentList) {
-        this.studentList = new ArrayList<>(studentList); // Tạo bản sao
+        this.studentList = new ArrayList<>(studentList);
         this.studentListFull = new ArrayList<>(studentList);
-        Log.d("StudentAdapter", "Khởi tạo adapter với " + this.studentList.size() + " sinh viên");
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
+    public void setOnDeleteClickListener(OnDeleteClickListener listener) {
+        this.onDeleteClickListener = listener;
     }
 
     @NonNull
@@ -36,54 +54,56 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     @Override
     public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
         Student student = studentList.get(position);
-        holder.tvStudentName.setText(student.getFullName());
-        holder.tvStudentCode.setText("Mã SV: " + student.getStudentCode());
-        holder.tvStudentEmail.setText("Email: " + student.getEmail());
-        Log.d("StudentAdapter", "Hiển thị sinh viên: " + student.getFullName() + " tại vị trí " + position);
+        holder.tvStudentName.setText(student.getFullName() != null ? student.getFullName() : "Không có tên");
+        holder.tvStudentCode.setText("Mã SV: " + (student.getStudentCode() != null ? student.getStudentCode() : "Không có mã"));
+
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(student);
+            }
+        });
+
+        holder.btnDelete.setOnClickListener(v -> {
+            if (onDeleteClickListener != null) {
+                onDeleteClickListener.onDeleteClick(student);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        Log.d("StudentAdapter", "Số lượng sinh viên hiển thị: " + studentList.size());
         return studentList.size();
     }
 
-    public void filter(String text) {
-        studentList.clear();
-        if (text.isEmpty()) {
-            studentList.addAll(studentListFull);
-        } else {
-            text = text.toLowerCase();
-            for (Student student : studentListFull) {
-                if (student.getFullName().toLowerCase().contains(text) ||
-                        student.getStudentCode().toLowerCase().contains(text) ||
-                        student.getEmail().toLowerCase().contains(text)) {
-                    studentList.add(student);
-                }
-            }
-        }
+    public void updateList(List<Student> newList) {
+        this.studentList = new ArrayList<>(newList);
+        this.studentListFull = new ArrayList<>(newList);
         notifyDataSetChanged();
-        Log.d("StudentAdapter", "Lọc danh sách, số lượng sau lọc: " + studentList.size());
     }
 
-    public void updateList(List<Student> newList) {
-        studentList = new ArrayList<>(newList); // Tạo bản sao mới
-        studentListFull = new ArrayList<>(newList);
-        notifyDataSetChanged();
-        Log.d("StudentAdapter", "Cập nhật danh sách, số lượng: " + studentList.size());
-        for (Student student : studentList) {
-            Log.d("StudentAdapter", "Sinh viên trong danh sách: " + student.getFullName());
+    public void filter(String query) {
+        studentList.clear();
+        if (query.isEmpty()) {
+            studentList.addAll(studentListFull);
+        } else {
+            String lowerCaseQuery = query.toLowerCase();
+            studentList.addAll(studentListFull.stream()
+                    .filter(student -> (student.getFullName() != null && student.getFullName().toLowerCase().contains(lowerCaseQuery)) ||
+                            (student.getStudentCode() != null && student.getStudentCode().toLowerCase().contains(lowerCaseQuery)))
+                    .collect(Collectors.toList()));
         }
+        notifyDataSetChanged();
     }
 
     static class StudentViewHolder extends RecyclerView.ViewHolder {
-        TextView tvStudentName, tvStudentCode, tvStudentEmail;
+        TextView tvStudentName, tvStudentCode;
+        ImageView btnDelete;
 
         public StudentViewHolder(@NonNull View itemView) {
             super(itemView);
             tvStudentName = itemView.findViewById(R.id.tvStudentName);
             tvStudentCode = itemView.findViewById(R.id.tvStudentCode);
-            tvStudentEmail = itemView.findViewById(R.id.tvStudentEmail);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
         }
     }
 }

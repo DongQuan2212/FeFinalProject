@@ -7,108 +7,6 @@
     android:background="@color/bg">
 
     <!-- Header Section -->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_class"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_notification"
-        app:layout_constraintEnd_toEndOf="@+id/btn_teacher"
-        app:layout_constraintStart_toStartOf="@+id/btn_teacher"
-        app:layout_constraintTop_toBottomOf="@+id/btn_teacher">
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Quản lý lớp học"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="@+id/imageView6" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_subject" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_teacher"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_notification"
-        app:layout_constraintEnd_toEndOf="@+id/btn_student"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_student"
-        app:layout_constraintTop_toBottomOf="@+id/btn_student">
-
-        <ImageView
-            android:id="@+id/retb"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_teacher" />
-
-        <TextView
-            android:id="@+id/trtbrtb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Quản lý giảng viên"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/retb"
-            app:layout_constraintStart_toEndOf="@+id/retb"
-            app:layout_constraintTop_toTopOf="@+id/retb" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_student"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_notification"
-        app:layout_constraintEnd_toEndOf="@+id/projectsHeader"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/projectsHeader"
-        app:layout_constraintTop_toBottomOf="@+id/projectsHeader">
-
-        <ImageView
-            android:id="@+id/iconigm"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_student" />
-
-        <TextView
-            android:id="@+id/tx6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Quản lý sinh viên"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iconigm"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardHeader"
         android:layout_width="match_parent"
@@ -157,7 +55,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvWelcomeBack"
                 app:layout_constraintVertical_bias="0.0" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -198,17 +95,16 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tvStudentCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="23"
                     android:textColor="#FFFFFF"
                     android:textSize="32sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Overdue Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -234,6 +130,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tvTeacherCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12"
@@ -243,7 +140,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Pending Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -269,20 +165,46 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tvSubjectCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="35"
                     android:textColor="#FFFFFF"
                     android:textSize="32sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnLogout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grey_600"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_width="127dp"
+                    android:layout_height="54dp"
+                    android:text="Logout"
+                    android:textColor="#FFFFFF"
+                    android:textSize="40sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.gridlayout.widget.GridLayout>
 
-    <!-- Projects Section Header -->
     <LinearLayout
         android:id="@+id/projectsHeader"
         android:layout_width="match_parent"
@@ -304,6 +226,107 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_student"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_notification"
+        app:layout_constraintEnd_toEndOf="@+id/projectsHeader"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/projectsHeader"
+        app:layout_constraintTop_toBottomOf="@+id/projectsHeader">
+
+        <ImageView
+            android:id="@+id/iconigm"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_student" />
+
+        <TextView
+            android:id="@+id/tx6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Quản lý sinh viên"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconigm"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_teacher"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_notification"
+        app:layout_constraintEnd_toEndOf="@+id/btn_student"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_student"
+        app:layout_constraintTop_toBottomOf="@+id/btn_student">
+
+        <ImageView
+            android:id="@+id/retb"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_teacher" />
+
+        <TextView
+            android:id="@+id/trtbrtb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Quản lý giảng viên"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/retb"
+            app:layout_constraintStart_toEndOf="@+id/retb"
+            app:layout_constraintTop_toTopOf="@+id/retb" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_class"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_notification"
+        app:layout_constraintEnd_toEndOf="@+id/btn_teacher"
+        app:layout_constraintStart_toStartOf="@+id/btn_teacher"
+        app:layout_constraintTop_toBottomOf="@+id/btn_teacher">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Quản lý lớp học"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_subject" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/video_intro"
         android:layout_width="0dp"
@@ -315,5 +338,4 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/study" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

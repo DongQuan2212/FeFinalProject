@@ -3,47 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="16dp"
+    android:layout_marginVertical="4dp"
+    android:layout_marginHorizontal="8dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
-        <TextView
-            android:id="@+id/subject_name"
-            android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Tên môn học"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Tên môn học -->
+            <TextView
+                android:id="@+id/tvSubjectName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên môn học"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Mã môn học -->
+            <TextView
+                android:id="@+id/tvSubjectId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Mã môn: SUB123"
+                android:textColor="#757575"
+                android:textSize="14sp" />
+
+            <!-- Mô tả -->
+            <TextView
+                android:id="@+id/tvSubjectDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Mô tả: Môn học cơ bản..."
+                android:textColor="#757575"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Nút xóa -->
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/delete"
 
 
-        <TextView
-            android:id="@+id/teacher_session"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="2024-2025 HỌC KỲ 2 - ĐẠI HỌC CHÍNH QUY"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/teacher_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Giáo viên: Nguyễn Văn A"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/schedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Thời gian: Thứ 2, Tiết 1-2"
-            android:textSize="14sp" />
+            />
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

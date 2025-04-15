@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Quản Lý Lớp Học"
+                android:text="Quản Lý Môn Học"
                 android:textColor="@color/tx"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -46,12 +46,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/fabAddTeacher"
+                android:id="@+id/fabAddSubject"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_margin="16dp"
                 android:background="@drawable/bg_document_tag"
-                android:contentDescription="Thêm sinh viên"
+                android:contentDescription="Thêm môn học"
                 android:src="@drawable/add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,6 @@
                 app:layout_constraintVertical_bias="0.551" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Thanh tìm kiếm -->
@@ -92,21 +91,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@null"
-                android:hint="Tìm kiếm giảng viên..."
+                android:hint="Tìm kiếm môn học..."
                 android:inputType="text"
                 android:padding="8dp"
                 android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Heading và số lượng sinh viên -->
+    <!-- Heading và số lượng môn học -->
     <TextView
-        android:id="@+id/tvStudentListHeading"
+        android:id="@+id/tvSubjectListHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Danh sách lớp học"
+        android:text="Danh sách môn học"
         android:textColor="@color/tx"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -114,19 +113,19 @@
         app:layout_constraintTop_toBottomOf="@id/cardSearch" />
 
     <TextView
-        android:id="@+id/tvStudentCount"
+        android:id="@+id/tvSubjectCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="(74)"
+        android:text="(0)"
         android:textColor="@color/grey_500"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvStudentListHeading"
-        app:layout_constraintStart_toEndOf="@id/tvStudentListHeading"
-        app:layout_constraintTop_toTopOf="@id/tvStudentListHeading" />
+        app:layout_constraintBottom_toBottomOf="@id/tvSubjectListHeading"
+        app:layout_constraintStart_toEndOf="@id/tvSubjectListHeading"
+        app:layout_constraintTop_toTopOf="@id/tvSubjectListHeading" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStudents"
+        android:id="@+id/rvSubjects"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -134,9 +133,7 @@
         android:paddingHorizontal="16dp"
         android:paddingBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvStudentListHeading"
-        tools:listitem="@layout/class_item" />
-
-    <!-- Nút thêm sinh viên (floating action button) -->
+        app:layout_constraintTop_toBottomOf="@id/tvSubjectListHeading"
+        tools:listitem="@layout/subject_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

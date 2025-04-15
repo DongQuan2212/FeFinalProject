@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Thêm Sinh Viên"
+                android:text="Thêm Môn Học"
                 android:textColor="@color/tx"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -47,7 +47,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Form nhập thông tin sinh viên -->
+    <!-- Form nhập thông tin môn học -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -61,54 +61,17 @@
             android:orientation="vertical"
             android:paddingBottom="80dp">
 
-            <!-- Email -->
+            <!-- Mã môn học -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="Email"
+                android:hint="Mã môn học"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/tx">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:padding="12dp"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Mật khẩu -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Mật khẩu"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/tx"
-                app:endIconMode="password_toggle">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:padding="12dp"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Mã sinh viên -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Mã sinh viên"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/tx">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etStudentCode"
+                    android:id="@+id/etSubjectId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -116,33 +79,83 @@
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Họ tên -->
+            <!-- Tên môn học -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="Họ tên"
+                android:hint="Tên môn học"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/tx">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etFullName"
+                    android:id="@+id/etSubjectName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:padding="12dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Mô tả -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Mô tả"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/tx">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Nút thêm sinh viên -->
+            <!-- Chọn giảng viên -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Chọn giảng viên"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/tx">
+
+                <Spinner
+                    android:id="@+id/spinnerTeacher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Chọn sinh viên -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Chọn sinh viên"
+                android:textColor="@color/tx"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStudents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false" />
+
+            <!-- Nút thêm môn học -->
             <Button
-                android:id="@+id/btnAddStudent"
+                android:id="@+id/btnAddSubject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/green"
-                android:text="Thêm Sinh Viên"
+                android:text="Th Registrationsêm Môn Học"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />

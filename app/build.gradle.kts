@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-
+    implementation (libs.play.services.base)
     implementation (libs.lottie)
     implementation(libs.appcompat)
     implementation(libs.material)

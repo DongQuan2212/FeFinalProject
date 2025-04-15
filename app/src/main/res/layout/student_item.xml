@@ -4,44 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="4dp"
-    android:layout_marginHorizontal="8dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
-        <!-- Họ tên sinh viên -->
-        <TextView
-            android:id="@+id/tvStudentName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Họ tên sinh viên"
-            android:textColor="#212121"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <!-- Mã sinh viên -->
-        <TextView
-            android:id="@+id/tvStudentCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Mã SV: 2210123"
-            android:textColor="#757575"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên sinh viên"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-        <!-- Email -->
-        <TextView
-            android:id="@+id/tvStudentEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Email: student@example.com"
-            android:textColor="#757575"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvStudentCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Mã SV: STU123"
+                android:textColor="#757575"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/delete"
+            android:contentDescription="Xóa sinh viên" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

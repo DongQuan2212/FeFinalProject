@@ -5,28 +5,39 @@ import java.util.List;
 
 public class Student extends User {
     private String studentCode;
-    private Date studyTime;
     private String major;
 
+    private List<Subject> joinedClasses;
+
     // Constructor
+
+    public Student() {
+    }
+
     public Student(String userID, String fullName, String email, String password, EUserRole role,
                    String imageUrl, Date birthDate, Boolean isActive, Date createdAt, Date updatedAt,
-                   String studentCode, Date studyTime, String major) {
+                   String studentCode, String major, List<Subject> joinedClasses) {
         super(userID, fullName, email, password, role, imageUrl, birthDate, isActive, createdAt, updatedAt);
         this.studentCode = studentCode;
-        this.studyTime = studyTime;
         this.major = major;
+        this.joinedClasses = joinedClasses;
     }
 
     // Getters and Setters
     public String getStudentCode() { return studentCode; }
     public void setStudentCode(String studentCode) { this.studentCode = studentCode; }
 
-    public Date getStudyTime() { return studyTime; }
-    public void setStudyTime(Date studyTime) { this.studyTime = studyTime; }
 
     public String getMajor() { return major; }
     public void setMajor(String major) { this.major = major; }
+
+    public List<Subject> getJoinedClasses() {
+        return joinedClasses;
+    }
+
+    public void setJoinedClasses(List<Subject> joinedClasses) {
+        this.joinedClasses = joinedClasses;
+    }
 
 
 }

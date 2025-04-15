@@ -48,12 +48,7 @@ public class MainActivity extends AppCompatActivity {
         // Anh xa list subject
         ListSubject = findViewById(R.id.list_subject);
         ListSubject.setLayoutManager(new GridLayoutManager(this, 1));
-        SubjectAdapter = new SubjectAdapter(getDummySubjects(), subject -> {
-            Intent intent = new Intent(MainActivity.this, SubjectActivity.class);
-            intent.putExtra("notification_id", subject.getId());
-            intent.putExtra("name_subject", subject.getName());
-            startActivity(intent);
-        });
+
         ListSubject.setAdapter(SubjectAdapter);
         // Anh xa list  notification
         ListNotification = findViewById(R.id.list_notification);
@@ -121,13 +116,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private List<Subject> getDummySubjects() {
-        List<Subject> subjects = new ArrayList<>();
-        subjects.add(new Subject(1,"Cong nghe Phan mem HDT_ Nhom 01CLC", "Co Tho", "Thứ 2, Tiết 1-2"));
-        subjects.add(new Subject(2,"Lap trinh di dong_ Nhom 04CLC", "Trần Thị B", "Thứ 2, Tiết 3-4"));
-        subjects.add(new Subject(3,"Mau thiet ke phan mem_ Nhom 01CLC", "Lê Văn C", "Thứ 3, Tiết 1-2"));
-        return subjects;
-    }
+
     private List<Notification> getDummyNotification() {
         List<Notification> notificationItems = new ArrayList<>();
         notificationItems.add(new Notification(1, "V/v nghỉ học môn Mẫu TKPM sáng 26/03", "Chào các em,\n" +
