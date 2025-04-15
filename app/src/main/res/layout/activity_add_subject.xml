@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
-    android:padding="16dp">
+    android:background="#F5F5F5">
 
     <!-- Toolbar với nút back và tiêu đề -->
     <androidx.appcompat.widget.Toolbar
@@ -53,12 +52,15 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:padding="16dp"
             android:paddingBottom="80dp">
 
             <!-- Mã môn học -->
@@ -155,9 +157,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/green"
-                android:text="Th Registrationsêm Môn Học"
+                android:text="Thêm Môn Học"
                 android:textColor="@color/white"
-                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
