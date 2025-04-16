@@ -40,21 +40,13 @@ public class AdminActivity extends AppCompatActivity {
         tvStudentCount = findViewById(R.id.tvStudentCount);
         tvTeacherCount = findViewById(R.id.tvTeacherCount);
         tvSubjectCount = findViewById(R.id.tvSubjectCount);
-        tvUserName = findViewById(R.id.tvUserName);
+        tvUserName = findViewById(R.id.textView5);
         btnStudent = findViewById(R.id.btn_student);
         btnTeacher = findViewById(R.id.btn_teacher);
         btnClass = findViewById(R.id.btn_class);
         btnLogout = findViewById(R.id.btnLogout);
 
-        // Hiển thị tên người dùng
-        if (auth.getCurrentUser() != null) {
-            String email = auth.getCurrentUser().getEmail();
-            tvUserName.setText(email != null ? email.split("@")[0] : "Admin");
-        } else {
-            tvUserName.setText("Admin");
-        }
 
-        // Tải dữ liệu tổng số tài khoản
         loadCounts();
 
         // Xử lý sự kiện nhấn vào các nút
@@ -122,6 +114,13 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
         Toast.makeText(this, "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Hàm load lại dữ liệu
+        loadCounts();
     }
 
 

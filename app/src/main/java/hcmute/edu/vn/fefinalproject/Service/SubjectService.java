@@ -123,6 +123,7 @@ public class SubjectService {
                                     updatedAt,
                                     (String) data.get("studentCode"),
                                     (String) data.get("major"),
+                                    (String) data.get("studyTime"),
                                     joinedClasses
                             );
                             studentList.add(student);

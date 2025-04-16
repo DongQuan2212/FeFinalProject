@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView tvTitle, tvSubtitle, txForgotPassword;
     ConstraintLayout btnSignIn;
-    EditText etEmail, etPassword; // Thêm EditText để lấy email và password
+    EditText etEmail, etPassword;
     LottieAnimationView video_intro;
     Animation topAnim, botAnim;
 
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    // Đăng nhập với Firebase cho các tài khoản khác
+
                     signInWithEmail(email, password);
                 }
             }
@@ -95,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    // Hàm đăng nhập với email và mật khẩu qua Firebase
     private void signInWithEmail(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

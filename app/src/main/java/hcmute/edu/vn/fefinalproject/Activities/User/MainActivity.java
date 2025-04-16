@@ -5,19 +5,20 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
 
-import hcmute.edu.vn.fefinalproject.Adapter.NotificationAdapter;
-import hcmute.edu.vn.fefinalproject.Model.Notification;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import hcmute.edu.vn.fefinalproject.Activities.LoginActivity;
 import hcmute.edu.vn.fefinalproject.R;
-import hcmute.edu.vn.fefinalproject.Adapter.SubjectAdapter;
-import hcmute.edu.vn.fefinalproject.Model.Subject;
+import hcmute.edu.vn.fefinalproject.Service.StudentService;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private hcmute.edu.vn.fefinalproject.Adapter.NotificationAdapter NotificationAdapter;
 
     Animation  botAnim,topAnim;
+    private FirebaseAuth mAuth;
+    private StudentService studentService;
+    private TextView fullnameTextView, mssvTextView, khoaTextView;
+    private ImageView profileImageView;
     private ConstraintLayout btnMenu, btnProfile,btnSetting,btnNotification,constraintNotification;
 
     @Override
@@ -35,11 +40,18 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+
+        mAuth = FirebaseAuth.getInstance();
+        studentService = new StudentService();
         //ania
         botAnim = AnimationUtils.loadAnimation(this, R.anim.anim_up_btn);
         topAnim = AnimationUtils.loadAnimation(this, R.anim.anim_down_btn);
 
         // anh xa
+        fullnameTextView = findViewById(R.id.fullname);
+        mssvTextView = findViewById(R.id.tx_mssv);
+        khoaTextView = findViewById(R.id.tx_khoa);
+        profileImageView = findViewById(R.id.avatar);
         btnMenu = findViewById(R.id.constraint_ic_menu);
         btnProfile = findViewById(R.id.constraint_ic_profile);
         btnSetting = findViewById(R.id.constraint_ic_setting);
@@ -54,18 +66,18 @@ public class MainActivity extends AppCompatActivity {
         ListNotification = findViewById(R.id.list_notification);
         ListNotification.setLayoutManager(new GridLayoutManager(this, 1));
 
-
-        NotificationAdapter = new NotificationAdapter(getDummyNotification(), notification -> {
-            Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
-            intent.putExtra("notification_id", notification.getId());
-            intent.putExtra("notification_title", notification.getTitle());
-            intent.putExtra("notification_content", notification.getContent());
-            startActivity(intent);
-        });
         ListNotification.setAdapter(NotificationAdapter);
 
-
-
+        // Get current user
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Fetch student data using StudentService
+            fetchStudentData(currentUser.getUid());
+        } else {
+            // Redirect to LoginActivity if not logged in
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
 
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
@@ -117,22 +129,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private List<Notification> getDummyNotification() {
-        List<Notification> notificationItems = new ArrayList<>();
-        notificationItems.add(new Notification(1, "V/v nghỉ học môn Mẫu TKPM sáng 26/03", "Chào các em,\n" +
-                "\n" +
-                "Hôm nay thầy không khỏe nên lớp nghỉ nha. Các em nhắn lại cho những bạn cùng nhóm mình giúp thầy.\n" +
-                "\n" +
-                "Thầy sẽ cấu hình các nội dung cần thực hiện của tuần này trên UTEXLMS, các em theo dõi và thực hiện.\n" +
-                "\n" +
-                "Tuần sau lớp học lại bình thường.\n" +
-                "\n" +
-                "Trân trọng,\n" +
-                "\n" +
-                "Thi Văn."));
-        notificationItems.add(new Notification(2, "Yêu cầu bằng cấp", "Anh yeu em qua bae"));
-        notificationItems.add(new Notification(3, "Xác thưc đrl", "Anh yeu em nhieu"));
-        return notificationItems;
+    private void fetchStudentData(String userId) {
+        studentService.loadStudentById(userId,
+                student -> {
+                    // Update UI with student data
+                    fullnameTextView.setText(student.getFullName() != null ? student.getFullName() : "Unknown");
+                    mssvTextView.setText(student.getStudentCode() != null ? "Mssv: " + student.getStudentCode() : "Mssv: N/A");
+                    khoaTextView.setText(student.getMajor() != null ? "Khoa: " + student.getMajor() : "Khoa: N/A");
+
+                    if (student.getImageUrl() != null && !student.getImageUrl().isEmpty()) {
+                        Glide.with(this)
+                                .load(student.getImageUrl())
+                                .into(profileImageView);
+                    } else {
+                        Glide.with(this)
+                                .load(R.drawable.img_1) // Default image
+                                .into(profileImageView);
+                    }
+                },
+                error -> {
+                    // Handle error (e.g., show toast or default values)
+                    fullnameTextView.setText("Unknown");
+                    mssvTextView.setText("Mssv: N/A");
+                    khoaTextView.setText("Khoa: N/A");
+                    Glide.with(this)
+                            .load(R.drawable.img_1)
+                            .into(profileImageView);
+
+                });
     }
 
 

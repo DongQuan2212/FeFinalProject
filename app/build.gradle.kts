@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.github.glide)
     implementation (libs.play.services.base)
     implementation (libs.lottie)
     implementation(libs.appcompat)
